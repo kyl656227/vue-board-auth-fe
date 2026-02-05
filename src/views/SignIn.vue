@@ -1,4 +1,5 @@
 <script setup>
+import UserService from '@/services/UserService';
 import { reactive, useAttrs } from 'vue';
 
 const state = reactive({
@@ -15,7 +16,7 @@ const changeModeShowPw = () => {
 }
 
 const signIn = async () => {
-    const result = await useAttrs.signIn(state.signin);
+    const result = await UserService.signIn(state.signin);
     console.log('result:', result);
 }
 
