@@ -5,7 +5,7 @@ import { reactive, useAttrs } from 'vue';
 const state = reactive({
     modeShowPw : false,
     signin : {
-        uid: 'mic2',
+        uid: 'mic2', //미리 지정해놓으면 로그인때마다 안 쳐도됨.
         upw: '1212'
     }
     

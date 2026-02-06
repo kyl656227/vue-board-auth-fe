@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
+import BoardWriteMod from '@/views/BoardWriteMod.vue'
 
 
 
@@ -14,6 +15,11 @@ const router = createRouter({
       path: '/signin',
       component: () => import('../views/SignIn.vue'),
     },
+    {
+      path: '/board/write',
+      component: () => import('../views/BoardWriteMod.vue'),
+    },
+ 
  
   ],
 })
