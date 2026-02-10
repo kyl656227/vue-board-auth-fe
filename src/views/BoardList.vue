@@ -32,8 +32,7 @@ const getBoardList = async () => { // 화면에 뿌려줄 실제 게시물 데�
 }
 
 onMounted(async () => {
-    getBoardMaxPage();
-    getBoardList(); // onMounted에서 호출
+    doSearch();    
 }); // "전체 몇 페이지인지"와 "첫 번째 페이지의 목록"을 동시에 요청
 
 
@@ -82,6 +81,16 @@ const displayedPages = computed( () => {
     
 });
 
+const goToFisrtPage = () => {
+    goToPage(1);
+}
+
+const goToLastPage = () => {
+    goToPage(state.maxPage);
+}
+
+
+
 </script>
 
 <template>
@@ -107,16 +116,16 @@ const displayedPages = computed( () => {
             </tr>
         </tbody>
     </table>
-    <div> {{ startPage }} {{ currentGroup }} {{ endPage }}</div>
-    <div>
-        <button @click="goToPrevPage" v-show="currentGroup != 1">&lt;</button>
+    <div class="pagination">
+    
+        <button @click="goToFisrtPage" :disabled="startPage === 1">&lt;&lt;</button>
+        <button @click="goToPrevPage" :disabled="startPage === 1">&lt;</button>
         <span class="page" v-for="item in displayedPages" 
         :key="item" :class="{selected: item == state.currentPage}" @click="goToPage(item)">
             {{ item }}
         </span>
-        <button v-show ="endPage < state.maxPage"@click="goToNextPage">&gt;</button>
-
-
+        <button @click="goToNextPage" :disabled="endPage === state.maxPage">&gt;</button>
+        <button @click="goToLastPage" :disabled="endPage === state.maxPage">&gt;&gt</button>       
     </div>
 </div>
 
