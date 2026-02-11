@@ -2,8 +2,11 @@
 import UserService from '@/services/UserService';
 import { reactive, useAttrs } from 'vue';
 import { useAuthenticationStore } from '@/stores/authentication';
+import { useRouter } from 'vue-router';
 
 const authentication = useAuthenticationStore();
+
+const router = useRouter();
 
 const state = reactive({
     modeShowPw : false,
@@ -23,6 +26,7 @@ const signIn = async () => {
     console.log('result:', result);
 
     authentication.signIn(result.resultData);
+    router.push('/');
 }
 
 </script>

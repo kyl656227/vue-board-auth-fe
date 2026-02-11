@@ -1,6 +1,9 @@
 <script setup>
 import { reactive, onMounted, computed } from 'vue';
+import { useRouter } from 'vue-router';
 import BoardService from '@/services/BoardService';
+
+const router = useRouter();
 
 const state = reactive({
     list: [],
@@ -62,6 +65,10 @@ const goToNextPage = () => {
     goToPage(nextPage);
 }
 
+const moveToDetail = id => {
+    router.push(`/board/${id}`);
+}
+
 
 
 
@@ -86,7 +93,7 @@ const goToFisrtPage = () => {
 }
 
 const goToLastPage = () => {
-    goToPage(state.maxPage);
+    router.push(`/board/${id}`);
 }
 
 
@@ -108,7 +115,7 @@ const goToLastPage = () => {
             </tr>
         </thead>
         <tbody>
-            <tr v-for="item in state.list" :key="item.id">
+            <tr @click="moveToDetail(item.id)" v-for="item in state.list" :key="item.id">
                 <td>{{ item.id }}</td>
                 <td>{{ item.title }}</td>
                 <td>{{ item.nm }}</td>

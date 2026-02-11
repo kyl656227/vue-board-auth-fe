@@ -19,6 +19,7 @@ const doSignUp = async() =>{
     }
     const result = await UserService.signUp(state.signup);
     console.log('result: ',result);
+
 }
 </script>
 
