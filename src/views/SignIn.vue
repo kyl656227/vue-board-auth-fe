@@ -25,6 +25,11 @@ const signIn = async () => {
     const result = await UserService.signIn(state.signin);
     console.log('result:', result);
 
+    if(result.resultData === null){ //로그인 실패
+        alert( result.resultMessage );
+        return;
+    }
+
     authentication.signIn(result.resultData);
     router.push('/');
 }

@@ -34,6 +34,11 @@ class BoardService {
         return res.data;
     }
 
+    async getBoardRelatedTitles(params){
+        const res = await axios.get(`${this.#url}/related_search`, {params})
+        return res.data;
+    }
+
 }
 
 export default new BoardService();
